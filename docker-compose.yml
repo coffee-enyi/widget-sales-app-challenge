@@ -7,3 +7,8 @@ services:
     entrypoint: ["/app/docker/entrypoint.sh"]
     ports: 
       - "8080:8000"
+  test:
+    build: .
+    volumes:
+      - .:/app
+    command: vendor/bin/phpunit
