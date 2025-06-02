@@ -53,11 +53,15 @@ Please make sure these extensions are enabled in your PHP installation.
 
 - Docker Compose installed
 
-1. Clone the repository:
+1. Clone the repository (while ensuring that the entrypoint.sh is executable):
 ```sh
    git clone git@github.com:coffee-enyi/widget-sales-app-challenge.git
    
    cd widget-sales-app-challenge
+```
+> Ensure the Docker entrypoint script executable
+```sh
+   chmod +x docker/entrypoint.sh
 ```
 
 2. Build the Docker image (runs composer install automatically):
