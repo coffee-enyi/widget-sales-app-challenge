@@ -112,3 +112,4 @@ Please make sure these extensions are enabled in your PHP installation.
 ```sh
    docker-compose run --rm test
 ```
+
