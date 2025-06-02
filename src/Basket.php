@@ -28,10 +28,10 @@ class Basket
     {
         $products = $this->offer->apply($this->items);
         
-        $subtotal = Money::of(0, '$');
+        $subtotal = Money::of(0, 'USD');
         foreach($products as $p)
         {
-            $subtotal = $subtotal->plus($product->price);
+            $subtotal = $subtotal->plus($p->price);
         }
 
         $deliveryFee = $this->delivery->getDeliveryFee($subtotal);
