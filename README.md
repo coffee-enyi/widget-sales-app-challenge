@@ -17,6 +17,9 @@ Widget sales proof of concept with delivery charges and discount offers
 
 Please make sure these extensions are enabled in your PHP installation.
 
+
+
+
 ## Installation
 
 1. Clone the repository:
@@ -28,14 +31,14 @@ Please make sure these extensions are enabled in your PHP installation.
 
 2. Install dependencies using Composer:
    
-   You may add the following flags to optimize and automate composer installation: --optimize-autoloader --no-interaction --prefer-dist.
+>  You may add the following flags to optimize and automate composer installation: --optimize-autoloader --no-interaction --prefer-dist.
 ```sh
    composer install 
 ```
 
 3. Run this command in the project root:
 ```sh
-   php -S localhost:8000
+   php -S localhost:8000 -t /app
 ```
 
 4. Open your browser and go to:
@@ -44,6 +47,9 @@ Please make sure these extensions are enabled in your PHP installation.
 ```
 
 5. Update the manual-test.php (in the root directory) file, with "add" calls to test inputs on the application
+
+
+
 
 ## Docker installation
 
@@ -97,6 +103,8 @@ Please make sure these extensions are enabled in your PHP installation.
 ```sh
    docker run -p 8000:8000 -v $(pwd):/app widget-sales-app
 ```
+
+
 
 
 ## Testing
