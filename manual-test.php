@@ -19,8 +19,13 @@ $offer = new OfferStrategy();
 $basket = new Basket($products, $delivery, $offer);
 
 // $basket->add('B01');
+// $basket->add('G01');
+
 // $basket->add('R01');
 // $basket->add('R01');
+
+// $basket->add('R01');
+// $basket->add('G01');
 
 $basket->add('B01');
 $basket->add('B01');

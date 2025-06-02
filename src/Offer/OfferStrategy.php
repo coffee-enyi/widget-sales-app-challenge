@@ -26,8 +26,8 @@ class OfferStrategy implements OfferStrategyInterface
         $count = count($r01s);
         for ($i = 0; $i < $count; $i++) {
             $price = $r01s[$i]->price;
-            if($i % 2 === 1) { 
-                $price = $price->multipliedBy(0.5, RoundingMode::HALF_EVEN);
+            if($i === 1) { //since key 1 is the 2nd instance
+                $price = $price->multipliedBy(0.5, RoundingMode::DOWN);
             }
             $discounted[] = new Product('R01', 'Red Widget', $price);
         }
