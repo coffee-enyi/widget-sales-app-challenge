@@ -9,6 +9,7 @@ use Brick\Money\Money;
 
 class BasketTest extends TestCase
 {
+    /** @var array<Product> */
     private array $catalogue;
 
     protected function setUp(): void
@@ -29,7 +30,7 @@ class BasketTest extends TestCase
         );
     }
 
-    public function testB01AndG01()
+    public function testB01AndG01(): void
     {
         $basket = $this->basket();
         $basket->add('B01');
@@ -37,7 +38,7 @@ class BasketTest extends TestCase
         $this->assertEquals('37.85', $basket->total()->getAmount()->__toString());
     }
 
-    public function testR01AndR01()
+    public function testR01AndR01(): void
     {
         $basket = $this->basket();
         $basket->add('R01');
@@ -45,7 +46,7 @@ class BasketTest extends TestCase
         $this->assertEquals('54.37', $basket->total()->getAmount()->__toString());
     }
 
-    public function testR01AndG01()
+    public function testR01AndG01(): void
     {
         $basket = $this->basket();
         $basket->add('R01');
@@ -53,7 +54,7 @@ class BasketTest extends TestCase
         $this->assertEquals('60.85', $basket->total()->getAmount()->__toString());
     }
 
-    public function testFiveItems()
+    public function testFiveItems(): void
     {
         $basket = $this->basket();
         $basket->add('B01');

@@ -1,0 +1,5 @@
+parameters:
+    level: max  # strictest level, you can start lower (0-8)
+    paths:
+        - src
+        - tests

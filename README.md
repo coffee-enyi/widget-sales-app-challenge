@@ -43,7 +43,7 @@ Please make sure these extensions are enabled in your PHP installation.
    http://localhost:8000/manual-test.php
 ```
 
-5. Update the manual-test.php (in the root directory) file with adding products using commented code to test application
+5. Update the manual-test.php (in the root directory) file, with "add" calls to test inputs on the application
 
 ## Docker installation
 
@@ -59,7 +59,7 @@ Please make sure these extensions are enabled in your PHP installation.
    
    cd widget-sales-app-challenge
 ```
-> Ensure the Docker entrypoint script executable
+> Ensure the Docker entrypoint script is executable
 ```sh
    chmod +x docker/entrypoint.sh
 ```

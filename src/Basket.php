@@ -8,8 +8,12 @@ use Brick\Money\Money;
 
 class Basket
 {
+    /** @var Product[] */
     private array $items = [];
 
+    /**
+     * @param Product[] $catalogue
+     */
     public function __construct(
         private array $catalogue,
         private DeliveryStrategyInterface $delivery,
