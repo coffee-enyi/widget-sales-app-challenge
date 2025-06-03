@@ -122,6 +122,21 @@ Please make sure these extensions are enabled in your PHP installation.
 
 2. Use the available Test service (If having Docker Compose)
 ```sh
-   docker-compose run --rm test
+   docker-compose run --rm testvendor/bin/phpstan analyse
+```
+
+
+## Running PHPStan (Static Analysis)
+1. If you're using Docker:
+```sh
+   docker run --rm -v $(pwd):/app widget-sales-app vendor/bin/phpstan analyse
+```
+2. If you're using Docker Compose, use the phpstan service created:
+```sh
+   docker compose run --rm phpstan
+```
+3. If you're running it manually on your local system (PHP + Composer installed):
+```sh
+   vendor/bin/phpstan analyse
 ```
 
