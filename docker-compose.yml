@@ -6,7 +6,7 @@ services:
     working_dir: /app
     entrypoint: ["/app/docker/entrypoint.sh"]
     ports: 
-      - "8080:8000"
+      - "8000:8000"
   test:
     build: .
     volumes:

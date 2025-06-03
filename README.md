@@ -57,9 +57,9 @@ Please make sure these extensions are enabled in your PHP installation.
 
 - Docker installed 
 
-- Docker Compose installed
+- Docker Compose installed (optional)
 
-1. Clone the repository (while ensuring that the entrypoint.sh is executable):
+1. Clone and enter the repository:
 ```sh
    git clone git@github.com:coffee-enyi/widget-sales-app-challenge.git
    
