@@ -5,16 +5,16 @@ namespace App\Offer;
 use App\Offer\OfferStrategyInterface;
 use App\Product;
 use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 
 class OfferStrategy implements OfferStrategyInterface
 {
-    public function apply(array $products): array
+    public function getDiscount(array $products): Money
     {
         $others = [];
         $r01s = [];
 
         foreach ($products as $product) {
-            
             if ($product->code === 'R01') {
                 $r01s[] = $product;
             } else {
@@ -22,16 +22,17 @@ class OfferStrategy implements OfferStrategyInterface
             }
         }
 
-        $discounted = [];
+        $discountPrice = Money::of(0, 'USD');
         $count = count($r01s);
         for ($i = 0; $i < $count; $i++) {
             $price = $r01s[$i]->price;
             if($i === 1) { //since key 1 is the 2nd instance
-                $price = $price->multipliedBy(0.5, RoundingMode::DOWN);
+                $discountPrice = $discountPrice->plus(
+                    $price->multipliedBy(0.5, RoundingMode::UP)
+                );
             }
-            $discounted[] = new Product('R01', 'Red Widget', $price);
         }
 
-        return [...$others, ...$discounted];
+        return $discountPrice;
     }
 }

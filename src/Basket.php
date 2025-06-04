@@ -30,13 +30,15 @@ class Basket
 
     public function total(): Money
     {
-        $products = $this->offer->apply($this->items);
-        
         $subtotal = Money::of(0, 'USD');
-        foreach($products as $p)
+        foreach($this->items as $p)
         {
             $subtotal = $subtotal->plus($p->price);
         }
+
+        $offerDiscountAmt = $this->offer->getDiscount($this->items);
+
+        $subtotal = $subtotal->minus($offerDiscountAmt);
 
         $deliveryFee = $this->delivery->getDeliveryFee($subtotal);
         

@@ -3,12 +3,13 @@
 namespace App\Offer;
 
 use App\Product;
+use Brick\Money\Money;
 
 interface OfferStrategyInterface
 {
     /**
      * @param Product[] $products
-     * @return Product[] updated product list plus discounts
+     * @return \Brick\Money\Money The calculated discount amount
      */
-    public function apply(array $products): array;
+    public function getDiscount(array $products): Money;
 }
