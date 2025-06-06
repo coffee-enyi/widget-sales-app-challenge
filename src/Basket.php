@@ -33,7 +33,7 @@ class Basket
         }
     }
 
-    private function applyOffersDiscounts(): Money
+    private function totalDiscountFromOffers(): Money
     {
         $totalDiscount = Money::of(0, 'USD');
 
@@ -60,7 +60,7 @@ class Basket
             $subtotal = $subtotal->plus($p->price);
         }
 
-        $subtotal = $subtotal->minus($this->applyOffersDiscounts());
+        $subtotal = $subtotal->minus($this->totalDiscountFromOffers());
 
         $deliveryFee = $this->delivery->getDeliveryFee($subtotal);
         
