@@ -126,7 +126,7 @@ Please make sure these extensions are enabled in your PHP installation.
 ```
 
 
-## Running PHPStan (Static Analysis)
+### Running PHPStan (Static Analysis)
 1. If you're using Docker:
 ```sh
    docker run --rm -v $(pwd):/app widget-sales-app vendor/bin/phpstan analyse

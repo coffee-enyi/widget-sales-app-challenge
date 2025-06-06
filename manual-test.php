@@ -4,7 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 use App\Basket;
 use App\Product;
 use App\Delivery\DeliveryStrategy;
-use App\Offer\OfferStrategy;
 use Brick\Money\Money;
 
 $products = [
@@ -14,9 +13,11 @@ $products = [
 ];
 
 $delivery = new DeliveryStrategy();
-$offer = new OfferStrategy();
 
-$basket = new Basket($products, $delivery, $offer);
+$basket = new Basket($products, $delivery);
+
+$basket->setOffers(['BuyOneRedGetSecondHalfPriceOffer']);
+
 
 // $basket->add('B01');
 // $basket->add('G01');

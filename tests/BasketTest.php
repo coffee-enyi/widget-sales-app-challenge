@@ -25,14 +25,14 @@ class BasketTest extends TestCase
     {
         return new Basket(
             $this->catalogue,
-            new DeliveryStrategy(),
-            new OfferStrategy()
+            new DeliveryStrategy()
         );
     }
 
     public function testB01AndG01(): void
     {
         $basket = $this->basket();
+        $basket->setOffers(['BuyOneRedGetSecondHalfPriceOffer']);
         $basket->add('B01');
         $basket->add('G01');
         $this->assertEquals('37.85', $basket->total()->getAmount()->__toString());
@@ -41,6 +41,7 @@ class BasketTest extends TestCase
     public function testR01AndR01(): void
     {
         $basket = $this->basket();
+        $basket->setOffers(['BuyOneRedGetSecondHalfPriceOffer']);
         $basket->add('R01');
         $basket->add('R01');
         $this->assertEquals('54.37', $basket->total()->getAmount()->__toString());
@@ -49,6 +50,7 @@ class BasketTest extends TestCase
     public function testR01AndG01(): void
     {
         $basket = $this->basket();
+        $basket->setOffers(['BuyOneRedGetSecondHalfPriceOffer']);
         $basket->add('R01');
         $basket->add('G01');
         $this->assertEquals('60.85', $basket->total()->getAmount()->__toString());
@@ -57,6 +59,7 @@ class BasketTest extends TestCase
     public function testFiveItems(): void
     {
         $basket = $this->basket();
+        $basket->setOffers(['BuyOneRedGetSecondHalfPriceOffer']);
         $basket->add('B01');
         $basket->add('B01');
         $basket->add('R01');

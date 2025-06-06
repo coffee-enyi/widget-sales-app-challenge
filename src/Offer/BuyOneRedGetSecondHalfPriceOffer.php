@@ -7,7 +7,7 @@ use App\Product;
 use Brick\Math\RoundingMode;
 use Brick\Money\Money;
 
-class OfferStrategy implements OfferStrategyInterface
+class BuyOneRedGetSecondHalfPriceOffer implements OfferStrategyInterface
 {
     public function getDiscount(array $products): Money
     {

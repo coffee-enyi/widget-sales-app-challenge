@@ -4,6 +4,7 @@ namespace App;
 
 use App\Delivery\DeliveryStrategyInterface;
 use App\Offer\OfferStrategyInterface;
+use App\Offer\OfferFactory;
 use Brick\Money\Money;
 
 class Basket
@@ -11,14 +12,37 @@ class Basket
     /** @var Product[] */
     private array $items = [];
 
+    /** @var OfferStrategyInterface[] */
+    private array $offers = [];
+
     /**
      * @param Product[] $catalogue
      */
     public function __construct(
         private array $catalogue,
-        private DeliveryStrategyInterface $delivery,
-        private OfferStrategyInterface $offer
+        private DeliveryStrategyInterface $delivery
         ) {}
+
+    /**
+     * @param string[] $offerClassNames
+     */
+    public function setOffers(array $offerClassNames): void
+    {
+        foreach($offerClassNames as $className) {
+            $this->offers[] = OfferFactory::create($className);
+        }
+    }
+
+    private function applyOffersDiscounts(): Money
+    {
+        $totalDiscount = Money::of(0, 'USD');
+
+        foreach($this->offers as $offer) {
+            $totalDiscount = $totalDiscount->plus($offer->getDiscount($this->items));
+        }
+
+        return $totalDiscount;
+    }
 
     public function add(string $code): void
     {
@@ -36,9 +60,7 @@ class Basket
             $subtotal = $subtotal->plus($p->price);
         }
 
-        $offerDiscountAmt = $this->offer->getDiscount($this->items);
-
-        $subtotal = $subtotal->minus($offerDiscountAmt);
+        $subtotal = $subtotal->minus($this->applyOffersDiscounts());
 
         $deliveryFee = $this->delivery->getDeliveryFee($subtotal);
         
